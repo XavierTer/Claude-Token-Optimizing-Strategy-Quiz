@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row min-vh-75 align-items-center justify-content-center hero-section text-center py-5">
+    <div class="col-md-8 col-lg-6">
+        <h1 class="display-4 fw-bold text-custom-primary mb-3">Strategies for Claude Code Token Optimization</h1>
+        <p class="lead text-muted mb-4">A 5-minute interactive guide to not running out of tokens</p>
+        <p class="mb-5 px-md-4">
+            Learn the core strategies for maximizing your Claude token budget. 
+            We'll explore models, context optimization, ignore files, and timing strategies 
+            so you never unexpectedly hit your cap again.
+        </p>
+        
+        <form action="{{ url_for('start') }}" method="POST">
+            <button type="submit" class="btn btn-custom-primary btn-lg px-5 py-3 shadow-sm test-start-btn">Start Learning &rarr;</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
