@@ -61,8 +61,10 @@
             </div>
         {% endfor %}
 
-        <div class="text-center mt-5 mb-5 pb-5">
-            <a href="{{ url_for('reset') }}" class="btn btn-outline-secondary btn-lg px-5 shadow-sm">Start Over</a>
+        <div class="d-flex justify-content-center gap-3 flex-wrap mt-5 mb-5 pb-5">
+            <a href="{{ url_for('learn', lesson_num=1) }}" class="btn btn-outline-secondary btn-lg px-4 shadow-sm">Restart Lessons</a>
+            <a href="{{ url_for('quiz', q_num=1) }}" class="btn btn-outline-secondary btn-lg px-4 shadow-sm">Retake Quiz</a>
+            <a href="{{ url_for('reset') }}" class="btn btn-outline-secondary btn-lg px-5 shadow-sm">Homepage</a>
         </div>
     </div>
 </div>

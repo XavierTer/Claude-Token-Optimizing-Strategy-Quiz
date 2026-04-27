@@ -56,7 +56,7 @@ LESSONS = [
             },
             {
                 "heading": "/compact and /clear commands",
-                "body": "Claude reads your entire context window on every response. /clear wipes it completely \u2014 great when you're starting a new task and don't need prior context. /compact summarizes the conversation into a compressed form, preserving important instructions while cutting token overhead. A 16-year-old on Reddit cut token costs by 75% using just a two-sentence context-compression prompt."
+                "body": "Claude reads your entire context window on every response. /clear wipes it completely \u2014 great when you're starting a new task and don't need prior context. /compact summarizes the conversation into a compressed form, preserving important instructions while cutting token overhead."
             }
         ],
         "meme_caption": "Claude reading your node_modules before answering a CSS question.",
@@ -69,7 +69,7 @@ LESSONS = [
         "sections": [
             {
                 "heading": "Why does timing matter?",
-                "body": "Anthropic's models consume significant compute \u2014 and therefore electricity. During high-demand periods on the energy grid, usage is constrained. During off-peak hours, Anthropic can offer more generous limits."
+                "body": "Why does timing matter?\nDuring peak hours on weekdays, user demand far exceeds available GPU capacity, forcing Anthropic to constrain usage to maintain service stability. During off-peak hours and weekends, server load is lighter, so Anthropic can offer more generous limits without risking system overload."
             },
             {
                 "heading": "When are peak hours?",
