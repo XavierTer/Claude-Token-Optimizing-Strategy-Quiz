@@ -33,12 +33,25 @@
         </div>
         {% endfor %}
 
+        {% if lesson.meme_image %}
+        <div class="mb-5 text-center">
+            <img src="{{ url_for('static', filename=lesson.meme_image) }}" alt="{{ lesson.meme_alt }}" class="img-fluid rounded shadow-sm" style="max-height: 400px;">
+        </div>
+        {% else %}
         <div class="meme-callout p-4 mb-5 shadow-sm rounded">
             <p class="mb-1 fw-bold text-muted small text-uppercase">💭 Real talk:</p>
             <p class="mb-0 fs-5 fst-italic">"{{ lesson.meme_caption }}"</p>
         </div>
+        {% endif %}
 
-        <div class="d-flex justify-content-end mb-5">
+        <div class="d-flex justify-content-between mb-5">
+            <div>
+                {% if lesson.num > 1 %}
+                <a href="{{ url_for('learn', lesson_num=lesson.num - 1) }}" class="btn btn-secondary btn-lg px-4 shadow-sm">
+                    &larr; Back
+                </a>
+                {% endif %}
+            </div>
             <form action="{{ url_for('learn_next', lesson_num=lesson.num) }}" method="POST">
                 <button type="submit" class="btn btn-custom-primary btn-lg px-4 shadow-sm">
                     {% if lesson.num == 4 %}Go to Quiz &rarr;{% else %}Next Lesson &rarr;{% endif %}

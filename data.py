@@ -17,7 +17,7 @@ LESSONS = [
                 "body": "Claude Pro users get approximately 44,000 tokens per 5-hour usage window. In practice, this allows for roughly 10\u201340 prompts in Claude Code \u2014 depending on how heavy each prompt is. Running out mid-project is a real problem."
             }
         ],
-        "meme_caption": "When you realize you burned 40,000 tokens asking Claude to refactor your README...",
+        "meme_image": "l1_meme.png",
         "meme_alt": "Person realizing the mistake they just made"
     },
     {
@@ -38,7 +38,7 @@ LESSONS = [
                 "body": "Use Sonnet or Opus when reasoning depth matters: debugging complex systems, designing architecture, working across large codebases. Save Opus for tasks where you genuinely need it."
             }
         ],
-        "meme_caption": "Using Claude Opus to generate a .gitignore file. Bro really called in a consultant for a sticky note.",
+        "meme_image": "l2_meme.png",
         "meme_alt": "Overpowered solution to a trivial problem"
     },
     {
@@ -59,7 +59,7 @@ LESSONS = [
                 "body": "Claude reads your entire context window on every response. /clear wipes it completely \u2014 great when you're starting a new task and don't need prior context. /compact summarizes the conversation into a compressed form, preserving important instructions while cutting token overhead."
             }
         ],
-        "meme_caption": "Claude reading your node_modules before answering a CSS question.",
+        "meme_image": "l3_meme.png",
         "meme_alt": "Someone reading a phonebook to answer a simple question"
     },
     {
@@ -80,7 +80,7 @@ LESSONS = [
                 "body": "Outside of peak hours and on weekends, Anthropic often doubles usage limits. If your workflow is flexible, doing your heavy Claude Code sessions at night or on weekends can effectively double your available token budget \u2014 for free."
             }
         ],
-        "meme_caption": "Using Claude Opus at 2pm on a Tuesday. This is not going to end well.",
+        "meme_image": "l4_meme.png",
         "meme_alt": "Someone walking confidently toward inevitable disaster"
     }
 ]
