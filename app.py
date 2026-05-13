@@ -76,7 +76,22 @@ def quiz(q_num):
         return redirect(url_for('home'))
         
     page_context = f"Quiz Q {q_num} of 5"
-    return render_template('quiz.html', question=question, page_context=page_context)
+    
+    show_feedback = request.args.get('feedback') == '1'
+    feedback = None
+    if show_feedback:
+        answers_dict = session.get('quiz_answers', {})
+        user_ans = set([int(x) for x in answers_dict.get(str(q_num), [])])
+        correct_ans = set(question["correct"])
+        is_correct = (user_ans == correct_ans)
+        feedback = {
+            "is_correct": is_correct,
+            "user_answer_indices": list(user_ans),
+            "correct_indices": list(correct_ans),
+            "explanation": question["explanation"]
+        }
+        
+    return render_template('quiz.html', question=question, page_context=page_context, feedback=feedback)
 
 @app.route('/quiz/<int:q_num>/answer', methods=['POST'])
 def quiz_answer(q_num):
@@ -86,10 +101,7 @@ def quiz_answer(q_num):
     answers_dict[str(q_num)] = answers
     session['quiz_answers'] = answers_dict
     
-    if q_num < 5:
-        return redirect(url_for('quiz', q_num=q_num + 1))
-    else:
-        return redirect(url_for('results'))
+    return redirect(url_for('quiz', q_num=q_num, feedback=1))
 
 @app.route('/results')
 def results():

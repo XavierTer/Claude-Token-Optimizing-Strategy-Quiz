@@ -22,25 +22,61 @@
         <form action="{{ url_for('quiz_answer', q_num=question.num) }}" method="POST" id="quiz-form">
             <div class="list-group mb-4">
                 {% for option in question.options %}
-                    <label class="list-group-item list-group-item-action answer-option p-3">
+                    {% set is_user_choice = feedback and (loop.index0 in feedback.user_answer_indices) %}
+                    {% set is_correct_choice = feedback and (loop.index0 in feedback.correct_indices) %}
+                    {% set list_group_class = 'list-group-item list-group-item-action answer-option p-3' %}
+                    {% if feedback %}
+                        {% if is_correct_choice %}
+                            {% set list_group_class = list_group_class + ' list-group-item-success' %}
+                        {% elif is_user_choice and not is_correct_choice %}
+                            {% set list_group_class = list_group_class + ' list-group-item-danger' %}
+                        {% endif %}
+                    {% endif %}
+                    <label class="{{ list_group_class }}">
                         <div class="form-check m-0">
                             {% if question.type == 'single' %}
-                                <input class="form-check-input mt-1" type="radio" name="answer" value="{{ loop.index0 }}">
+                                <input class="form-check-input mt-1" type="radio" name="answer" value="{{ loop.index0 }}"
+                                    {% if is_user_choice %}checked{% endif %}
+                                    {% if feedback %}disabled{% endif %}>
                             {% else %}
-                                <input class="form-check-input mt-1" type="checkbox" name="answer" value="{{ loop.index0 }}">
+                                <input class="form-check-input mt-1" type="checkbox" name="answer" value="{{ loop.index0 }}"
+                                    {% if is_user_choice %}checked{% endif %}
+                                    {% if feedback %}disabled{% endif %}>
                             {% endif %}
                             <span class="ms-2 fs-5">{{ option }}</span>
+                            {% if feedback %}
+                                {% if is_correct_choice %}
+                                    <span class="badge bg-success float-end mt-1">Correct Answer</span>
+                                {% elif is_user_choice %}
+                                    <span class="badge bg-danger float-end mt-1">Your Answer</span>
+                                {% endif %}
+                            {% endif %}
                         </div>
                     </label>
                 {% endfor %}
             </div>
 
+            {% if feedback %}
+            <div class="alert {% if feedback.is_correct %}alert-success{% else %}alert-danger{% endif %} mb-4 shadow-sm" role="alert">
+                <h4 class="alert-heading">{% if feedback.is_correct %}Correct!{% else %}Incorrect{% endif %}</h4>
+                <p class="mb-0">{{ feedback.explanation }}</p>
+            </div>
+            {% else %}
             <div id="validation-alert" class="alert alert-danger d-none shadow-sm" role="alert">
                 Please select an answer before continuing.
             </div>
+            {% endif %}
 
             <div class="d-flex justify-content-end mb-5">
-                <button type="submit" class="btn btn-custom-primary btn-lg px-4 shadow-sm">Submit Answer &rarr;</button>
+                {% if feedback %}
+                    {% if question.num < 5 %}
+                        <a href="{{ url_for('quiz', q_num=question.num + 1) }}" class="btn btn-custom-primary btn-lg px-4 shadow-sm">Next Question &rarr;</a>
+                    {% else %}
+                        <a href="{{ url_for('results') }}" class="btn btn-custom-primary btn-lg px-4 shadow-sm">View Results &rarr;</a>
+                    {% endif %}
+                {% else %}
+                    <button type="submit" class="btn btn-custom-primary btn-lg px-4 shadow-sm">Submit Answer &rarr;</button>
+                {% endif %}
             </div>
         </form>
     </div>
