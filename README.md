@@ -2,7 +2,8 @@
 Demo Video: https://youtu.be/W8q-zz0Ev2Y?si=BNE26q-MO3SEup6E
 
 Project Team:
-Xavier Terminello -- XavierTer;
+
+Xavier Terminello -- XavierTer
 
 Babajide Hamzat -- 13abajide
 
