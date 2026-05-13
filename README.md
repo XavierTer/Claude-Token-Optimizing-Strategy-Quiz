@@ -2,8 +2,8 @@
 Demo Video: https://youtu.be/W8q-zz0Ev2Y?si=BNE26q-MO3SEup6E
 
 Project Team:
-Xavier Terminello - XavierTer
-Babajide Hamzat - 13abajide
+Xavier Terminello -- XavierTer
+Babajide Hamzat -- 13abajide
 
 # Token Optimizer Quiz
 A Flask-based web application that provides interactive lessons and quizzes about token optimization.
